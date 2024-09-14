@@ -1,0 +1,144 @@
+  .App {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  input {
+    display: block;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .button:disabled {
+    background-color: #ccc; 
+    cursor: not-allowed; 
+  }
+  
+  .modal {
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; 
+    box-sizing: border-box; 
+  }
+
+  .table-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    overflow-x: auto;
+  }
+
+.table {
+    width: fit-content;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .table th, .table td {
+    padding: 10px; 
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9; 
+  }
+
+  .login-form-container {
+    display: inline-block;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .form-title {
+    grid-column: 1 / span 2; 
+    text-align: center; 
+    margin-bottom: 20px;
+  }
+  
+  .form-grid label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  
+  .form-grid input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-grid .error {
+    grid-column: 2;
+    color: red;
+  }
+  
+  .form-grid .message {
+    grid-column: 1 / span 2;
+    color: green;
+    text-align: center;
+  }
+  
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  .centered-content {
+    padding: 20px;
+  }

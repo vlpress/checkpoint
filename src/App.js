@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './user/login';
+import UsersTable from './user/userTable';
+import RegisterUser from './user/registerUser';
+import UserInfo from './user/userInfo';
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = React.useState(null);
+  const handleLogin = (user) => {
+      setLoggedInUser(user);
+  };
+
+  const handleLogout = () => {
+    setLoggedInUser(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* if the user is authorized send it to /users */}
+        <Route path="/" element={loggedInUser ? <Navigate to="/users" replace /> : <Login onLogin={handleLogin} />} />
+        
+        {/* if the user is authorized and Admin - show users list */}
+        <Route path="/users" element={loggedInUser && loggedInUser.role === 'ADMIN' ? <UsersTable loggedUser={loggedInUser} /> : <Navigate to="/userInfo" />}/>
+
+        <Route path="/userInfo" element={<UserInfo loggedUser={loggedInUser} onLogout={handleLogout}/>} />
+        <Route path="/register" element={<RegisterUser />} />
+
+      </Routes>
+    </Router>
   );
 }
 
