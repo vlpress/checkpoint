@@ -211,8 +211,8 @@ const confirmDelete = async () => {
                 <td>
                     <input
                     type="checkbox"
-                    checked={selectedUsers.includes(user.id)}
-                    onChange={() => handleSelectUser(user.id)}
+                    checked={selectedUsers.includes(user.email)}
+                    onChange={() => handleSelectUser(user.email)}
                     />
                 </td>
                 <td>{user.firstName}</td>
