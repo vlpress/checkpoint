@@ -45,9 +45,9 @@ useEffect(() => {
   
 
   // Checkbox checking
-  const handleSelectUser = (id) => {
+  const handleSelectUser = (email) => {
     setSelectedUsers((prevSelected) =>
-      prevSelected.includes(id) ? prevSelected.filter(userId => userId !== id) : [...prevSelected, id]
+      prevSelected.includes(email) ? prevSelected.filter(userId => userId !== email) : [...prevSelected, email]
     );
     setMessage('');
   };
@@ -145,9 +145,9 @@ const handleSaveUser = async () => {
 
 const confirmDelete = async () => {
     // selected users loop
-    for (let userId of selectedUsers) {
+    for (let email of selectedUsers) {
       try {
-        const response = await fetch(`http://localhost:8080/api/user/${userId}`, {
+        const response = await fetch(`http://localhost:8080/api/user/${email}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -156,17 +156,17 @@ const confirmDelete = async () => {
         });
   
         if (!response.ok) {
-            setErrors(`Failed to delete user with ID: ${userId}`);
-          throw new Error(`Failed to delete user with ID: ${userId}`);
+            setErrors(`Failed to delete user with ID: ${email}`);
+          throw new Error(`Failed to delete user with ID: ${email}`);
         }
   
-        console.log(`User with ID: ${userId} was deleted successfully`);
+        console.log(`User with ID: ${email} was deleted successfully`);
       } catch (error) {
         console.error(error.message);
       }
     }
   
-    setUsers((prevUsers) => prevUsers.filter((user) => !selectedUsers.includes(user.id)));
+    setUsers((prevUsers) => prevUsers.filter((user) => !selectedUsers.includes(user.email)));
   
     setSelectedUsers([]);
 
